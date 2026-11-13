@@ -1,0 +1,31 @@
+/* ==========================================================
+   components.css — Shared components: scroll-reveal, toast, primary/outline buttons are in hero.css
+   ========================================================== */
+
+/* Scroll animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Notification toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  background: var(--black);
+  color: var(--white);
+  padding: 16px 24px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+  transform: translateX(200%);
+  transition: transform 0.4s ease;
+  border-left: 3px solid var(--gold);
+}
+
+.toast.show { transform: translateX(0); }

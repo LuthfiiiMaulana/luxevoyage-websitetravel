@@ -1,0 +1,31 @@
+/* ==========================================================
+   responsive.css — Responsive breakpoints (keep this file LAST)
+   ========================================================== */
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .dest-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .dest-card:first-child { grid-row: auto; }
+  .video-inner { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero h1 { font-size: 2.4rem; }
+  .hero-stats { display: none; }
+  .search-fields { grid-template-columns: 1fr 1fr; }
+  .dest-grid { grid-template-columns: 1fr; }
+  .nature-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .modal { padding: 28px 24px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .search-fields { grid-template-columns: 1fr; }
+  .hero-cta { flex-direction: column; }
+  .btn-primary, .btn-outline { text-align: center; }
+}

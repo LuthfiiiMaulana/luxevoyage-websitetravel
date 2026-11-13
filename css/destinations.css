@@ -1,0 +1,243 @@
+/* ==========================================================
+   destinations.css — Destinations grid, popular cities, beaches & mountains
+   ========================================================== */
+
+/* ===== DESTINATIONS ===== */
+.section {
+  padding: 100px 5%;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+.section-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--black);
+}
+
+.section-title em { font-style: italic; color: var(--gold); }
+
+.section-sub {
+  color: var(--gray-400);
+  font-size: 1rem;
+  margin-top: 12px;
+  max-width: 500px;
+}
+
+/* Destinations Grid */
+.dest-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 300px 220px;
+  gap: 16px;
+}
+
+.dest-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.dest-card:first-child {
+  grid-row: 1 / 3;
+}
+
+.dest-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dest-card:hover img { transform: scale(1.06); }
+.dest-card:hover { transform: translateY(-4px); }
+
+.dest-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+}
+
+.dest-card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 20px 20px;
+}
+
+.dest-card-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 400;
+}
+
+.dest-card-info p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.dest-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--gold);
+  color: var(--black);
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ===== POPULAR CITIES ===== */
+.cities-section { padding: 100px 5%; }
+
+.cities-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.cities-scroll::-webkit-scrollbar { display: none; }
+
+.city-card {
+  flex-shrink: 0;
+  width: 220px;
+  scroll-snap-align: start;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  height: 300px;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.city-card:hover { transform: translateY(-6px); }
+
+.city-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+
+.city-card:hover img { transform: scale(1.08); }
+
+.city-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+}
+
+.city-card-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+}
+
+.city-card-info h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--white);
+}
+
+.city-card-info p { color: rgba(255,255,255,0.6); font-size: 0.78rem; }
+
+/* ===== BEACH/MOUNTAIN ===== */
+.nature-section {
+  padding: 100px 5%;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.nature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.nature-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 480px;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.nature-card:hover { transform: scale(0.98); }
+
+.nature-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.nature-card:hover img { transform: scale(1.06); }
+
+.nature-card-content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px;
+}
+
+.nature-card-content .tag {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  color: var(--white);
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+}
+
+.nature-card-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.nature-card-content p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+}
+
+/* Light-on-dark helpers (used on dark sections) */
+.section-title--light { color: var(--white); }
+.section-sub--light { color: rgba(255,255,255,0.5); }
+.section-header--tight { margin-bottom: 48px; }

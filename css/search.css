@@ -1,0 +1,113 @@
+/* ==========================================================
+   search.css — Search box (flights / hotel / car rental)
+   ========================================================== */
+
+/* ===== SEARCH BAR ===== */
+.search-section {
+  background: var(--white);
+  padding: 0 5%;
+  position: relative;
+  z-index: 10;
+}
+
+.search-box {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 -4px 60px rgba(0,0,0,0.15), var(--shadow);
+  padding: 32px 36px;
+  margin-top: -60px;
+  position: relative;
+}
+
+.search-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  background: var(--gray-100);
+  border-radius: 12px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.search-tab {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-tab.active {
+  background: var(--black);
+  color: var(--white);
+}
+
+.search-tab svg { width: 16px; height: 16px; }
+
+.search-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  align-items: end;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+.field-group input,
+.field-group select {
+  padding: 14px 16px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  color: var(--black);
+  background: var(--white);
+  outline: none;
+  transition: all 0.3s;
+  appearance: none;
+  cursor: pointer;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+  border-color: var(--black);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+
+.btn-search {
+  padding: 14px 32px;
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+.btn-search:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }

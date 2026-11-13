@@ -1,0 +1,103 @@
+/* ==========================================================
+   experience.css — Animated ocean + waterfall section
+   ========================================================== */
+
+/* ===== VIDEO SECTION ===== */
+.video-section {
+  background: var(--black);
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&q=80') center/cover;
+  opacity: 0.15;
+}
+
+.video-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.video-text .section-tag { color: var(--gold); }
+.video-text .section-title { color: var(--white); }
+.video-text .section-sub { color: rgba(255,255,255,0.5); }
+
+.video-features {
+  list-style: none;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.video-features li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
+}
+
+.video-features li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Animated Ocean */
+.ocean-canvas {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 360px;
+  background: #0a2040;
+}
+
+.ocean-canvas canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.waterfall-canvas {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 360px;
+  position: relative;
+}
+
+.waterfall-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  animation: waterfallFlow 3s ease-in-out infinite;
+}
+
+@keyframes waterfallFlow {
+  0%, 100% { filter: brightness(0.85) hue-rotate(0deg); }
+  50% { filter: brightness(0.95) hue-rotate(5deg); }
+}
+
+.water-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(0,100,200,0.2) 60%, rgba(0,150,255,0.3) 100%);
+  animation: shimmerFlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes shimmerFlow {
+  from { opacity: 0.5; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(-10px); }
+}

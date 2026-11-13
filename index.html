@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LuxeVoyage — pesan tiket pesawat, hotel, dan sewa mobil dengan pengalaman perjalanan mewah.">
+  <title>LuxeVoyage – Perjalanan Mewah Tanpa Batas</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (order matters: responsive.css must stay last) -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/destinations.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/tours.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Scripts (order matters: main.js must stay last) -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/ocean.js" defer></script>
+  <script src="js/booking.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+<!-- ========== LOGIN PAGE ========== -->
+<div id="login-page">
+  <div class="login-bg"></div>
+  <div class="login-overlay"></div>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="brand">Luxe<span>Voyage</span></div>
+      <p>Luxury Travel Experience</p>
+    </div>
+
+    <div class="tab-switch">
+      <button class="active" onclick="switchTab('login')">Masuk</button>
+      <button onclick="switchTab('register')">Daftar</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="login-form" id="login-form">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="nama@email.com">
+      </div>
+      <div class="form-group">
+        <label>Kata Sandi</label>
+        <input type="password" id="login-pass" placeholder="••••••••">
+      </div>
+      <button class="btn-login" onclick="doLogin()">MASUK →</button>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div class="register-form hidden" id="register-form">
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="reg-name" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="nama@email.com">
+      </div>
+      <div class="form-group">
+        <label>Kata Sandi</label>
+        <input type="password" id="reg-pass" placeholder="Min. 8 karakter">
+      </div>
+      <button class="btn-login" onclick="doRegister()">DAFTAR SEKARANG →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== MAIN SITE ========== -->
+<div id="main-site">
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">Luxe<span>Voyage</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#search">Penerbangan</a></li>
+    <li><a href="#search">Hotel</a></li>
+    <li><a href="#search">Sewa Mobil</a></li>
+    <li><a href="#tours">Tur</a></li>
+    <li><a href="#destinations">Destinasi</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <span class="nav-user" id="nav-username">👤 Traveler</span>
+    <button class="btn-logout" onclick="doLogout()">Keluar</button>
+    <div class="hamburger" onclick="toggleMobileMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Tutup menu">✕</button>
+  <a href="#search" onclick="toggleMobileMenu()">Penerbangan</a>
+  <a href="#search" onclick="toggleMobileMenu()">Hotel</a>
+  <a href="#search" onclick="toggleMobileMenu()">Sewa Mobil</a>
+  <a href="#tours" onclick="toggleMobileMenu()">Tur</a>
+  <a href="#destinations" onclick="toggleMobileMenu()">Destinasi</a>
+  <a href="#" onclick="doLogout()">Keluar</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-video-container">
+    <div class="hero-bg-slide active"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="wave-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">✦ Perjalanan Mewah</div>
+    <h1>Jelajahi Dunia<br>dengan <em>Elegan</em></h1>
+    <p>Temukan pengalaman perjalanan tak terlupakan ke Bangkok, Bali, Brazil, dan ratusan destinasi eksotis lainnya.</p>
+    <div class="hero-cta">
+      <a href="#search" class="btn-primary">Pesan Sekarang</a>
+      <a href="#destinations" class="btn-outline">Lihat Destinasi</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">500<span>+</span></div>
+      <div class="stat-label">Destinasi</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">50<span>K+</span></div>
+      <div class="stat-label">Pelanggan</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15<span>+</span></div>
+      <div class="stat-label">Tahun</div>
+    </div>
+  </div>
+
+  <div class="waves">
+    <div class="wave wave3"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave1"></div>
+  </div>
+</section>
+
+<!-- ========== SEARCH ========== -->
+<section class="search-section" id="search">
+  <div class="search-box">
+    <div class="search-tabs">
+      <button class="search-tab active" onclick="setTab(this,'flights')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Penerbangan
+      </button>
+      <button class="search-tab" onclick="setTab(this,'hotel')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="22" height="18" rx="2"/><path d="M8 21V7h8v14"/></svg>
+        Hotel
+      </button>
+      <button class="search-tab" onclick="setTab(this,'car')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v9a2 2 0 01-2 2h-2"/><circle cx="8.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+        Sewa Mobil
+      </button>
+    </div>
+
+    <div class="search-fields" id="search-fields-flights">
+      <div class="field-group">
+        <label>Dari</label>
+        <input type="text" placeholder="Jakarta (CGK)" id="from-city">
+      </div>
+      <div class="field-group">
+        <label>Ke</label>
+        <input type="text" placeholder="Bangkok (BKK)" id="to-city">
+      </div>
+      <div class="field-group">
+        <label>Keberangkatan</label>
+        <input type="date" id="depart-date">
+      </div>
+      <div class="field-group">
+        <label>Kembali</label>
+        <input type="date" id="return-date">
+      </div>
+      <div class="field-group">
+        <label>Penumpang</label>
+        <select>
+          <option>1 Dewasa</option>
+          <option>2 Dewasa</option>
+          <option>3 Dewasa</option>
+          <option>4+ Dewasa</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>&nbsp;</label>
+        <button class="btn-search" onclick="openBookingModal('Penerbangan')">🔍 Cari</button>
+      </div>
+    </div>
+
+    <div class="search-fields hidden" id="search-fields-hotel">
+      <div class="field-group">
+        <label>Destinasi</label>
+        <input type="text" placeholder="Bangkok, Thailand">
+      </div>
+      <div class="field-group">
+        <label>Check-in</label>
+        <input type="date">
+      </div>
+      <div class="field-group">
+        <label>Check-out</label>
+        <input type="date">
+      </div>
+      <div class="field-group">
+        <label>Tamu & Kamar</label>
+        <select>
+          <option>2 Tamu, 1 Kamar</option>
+          <option>4 Tamu, 2 Kamar</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>&nbsp;</label>
+        <button class="btn-search" onclick="openBookingModal('Hotel')">🔍 Cari</button>
+      </div>
+    </div>
+
+    <div class="search-fields hidden" id="search-fields-car">
+      <div class="field-group">
+        <label>Lokasi Pengambilan</label>
+        <input type="text" placeholder="Bandara Soekarno-Hatta">
+      </div>
+      <div class="field-group">
+        <label>Tanggal Mulai</label>
+        <input type="date">
+      </div>
+      <div class="field-group">
+        <label>Tanggal Selesai</label>
+        <input type="date">
+      </div>
+      <div class="field-group">
+        <label>Jenis Mobil</label>
+        <select>
+          <option>Semua Jenis</option>
+          <option>Sedan</option>
+          <option>SUV</option>
+          <option>Van</option>
+          <option>Luxury</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>&nbsp;</label>
+        <button class="btn-search" onclick="openBookingModal('Sewa Mobil')">🔍 Cari</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DESTINATIONS ========== -->
+<section class="section" id="destinations">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Populer</div>
+    <h2 class="section-title">Destinasi yang<br>Paling <em>Dicari</em></h2>
+    <p class="section-sub">Temukan keindahan dari setiap sudut dunia</p>
+  </div>
+
+  <div class="dest-grid reveal">
+    <div class="dest-card" onclick="openBookingModal('Bangkok')">
+      <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80" alt="Bangkok">
+      <div class="dest-card-overlay"></div>
+      <div class="dest-badge">🔥 Terpopuler</div>
+      <div class="dest-card-info">
+        <h3>Bangkok</h3>
+        <p>Thailand · 315+ Penerbangan</p>
+      </div>
+    </div>
+    <div class="dest-card" onclick="openBookingModal('Bali')">
+      <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" alt="Bali">
+      <div class="dest-card-overlay"></div>
+      <div class="dest-badge">🌴 Eksotis</div>
+      <div class="dest-card-info">
+        <h3>Bali</h3>
+        <p>Indonesia · 280+ Penerbangan</p>
+      </div>
+    </div>
+    <div class="dest-card" onclick="openBookingModal('Rio de Janeiro')">
+      <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=800&q=80" alt="Brazil">
+      <div class="dest-card-overlay"></div>
+      <div class="dest-card-info">
+        <h3>Rio de Janeiro</h3>
+        <p>Brazil · 120+ Penerbangan</p>
+      </div>
+    </div>
+    <div class="dest-card" onclick="openBookingModal('Tokyo')">
+      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" alt="Tokyo">
+      <div class="dest-card-overlay"></div>
+      <div class="dest-card-info">
+        <h3>Tokyo</h3>
+        <p>Jepang · 200+ Penerbangan</p>
+      </div>
+    </div>
+    <div class="dest-card" onclick="openBookingModal('Paris')">
+      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" alt="Paris">
+      <div class="dest-card-overlay"></div>
+      <div class="dest-card-info">
+        <h3>Paris</h3>
+        <p>Prancis · 180+ Penerbangan</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VIDEO / ANIMATED OCEAN ========== -->
+<section class="video-section">
+  <div class="video-inner">
+    <div class="video-text reveal">
+      <div class="section-tag">✦ Pengalaman</div>
+      <h2 class="section-title section-title--light">Rasakan Keindahan<br><em>Alam Sejati</em></h2>
+      <p class="section-sub section-sub--light">Dari deburan ombak laut yang memukau hingga gemericik air terjun yang menyejukkan jiwa.</p>
+      <ul class="video-features">
+        <li>Pemandangan pantai eksotis di 50+ negara</li>
+        <li>Air terjun tersembunyi yang menakjubkan</li>
+        <li>Ekosistem bawah laut yang masih terjaga</li>
+        <li>Panduan alam berpengalaman tersertifikasi</li>
+      </ul>
+      <br>
+      <button class="btn-primary" onclick="openBookingModal('Tur Alam')">Pesan Tur Alam</button>
+    </div>
+
+    <div>
+      <!-- Animated Ocean Canvas -->
+      <div class="ocean-canvas">
+        <canvas id="oceanCanvas"></canvas>
+      </div>
+      <br>
+      <!-- Waterfall animated div -->
+      <div class="waterfall-canvas">
+        <img class="waterfall-img" src="https://images.unsplash.com/photo-1432163279-2253d98ba3f4?w=800&q=80" alt="Air Terjun">
+        <div class="water-shimmer"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOURS ========== -->
+<section class="tours-section" id="tours">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Paket Wisata</div>
+    <h2 class="section-title">Tur <em>Terbaik</em><br>untuk Anda</h2>
+    <p class="section-sub">Paket perjalanan untuk setiap anggaran</p>
+  </div>
+
+  <div class="tours-grid">
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80" alt="Bangkok">
+        <span class="tour-cat">Kota</span>
+      </div>
+      <div class="tour-body">
+        <h3>Bangkok & Pattaya</h3>
+        <p>2 malam Bangkok, 3 malam Pattaya dengan paket all-inclusive premium</p>
+        <div class="tour-meta">
+          <span>✈️ 5 Hari</span>
+          <span>⭐ 4.9</span>
+          <span>👥 Max 12</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price">Rp 12,5<span>jt/orang</span></div>
+          <button class="btn-book" onclick="openBookingModal('Bangkok & Pattaya')">Pesan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali">
+        <span class="tour-cat">Pantai</span>
+      </div>
+      <div class="tour-body">
+        <h3>Bali Romantis</h3>
+        <p>Seminyak, Ubud, dan Uluwatu dengan villa private dan butler pribadi</p>
+        <div class="tour-meta">
+          <span>✈️ 7 Hari</span>
+          <span>⭐ 5.0</span>
+          <span>👥 Max 2</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price">Rp 8,9<span>jt/orang</span></div>
+          <button class="btn-book" onclick="openBookingModal('Bali Romantis')">Pesan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&q=80" alt="Brazil">
+        <span class="tour-cat">Adventure</span>
+      </div>
+      <div class="tour-body">
+        <h3>Brazil Amazon Explorer</h3>
+        <p>Hutan Amazon, Rio Carnival, dan Iguazu Falls dalam satu paket epik</p>
+        <div class="tour-meta">
+          <span>✈️ 10 Hari</span>
+          <span>⭐ 4.8</span>
+          <span>👥 Max 8</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price">Rp 22<span>jt/orang</span></div>
+          <button class="btn-book" onclick="openBookingModal('Brazil Amazon Explorer')">Pesan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1468413253980-4a9b25fa99bc?w=600&q=80" alt="Alps">
+        <span class="tour-cat">Ski</span>
+      </div>
+      <div class="tour-body">
+        <h3>Swiss Alps Winter</h3>
+        <p>Ski di Zermatt dan Verbier dengan lodge mewah berpemanas bawah lantai</p>
+        <div class="tour-meta">
+          <span>✈️ 6 Hari</span>
+          <span>⭐ 4.9</span>
+          <span>👥 Max 6</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price">Rp 35<span>jt/orang</span></div>
+          <button class="btn-book" onclick="openBookingModal('Swiss Alps Winter')">Pesan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=600&q=80" alt="India">
+        <span class="tour-cat">Budaya</span>
+      </div>
+      <div class="tour-body">
+        <h3>India Golden Triangle</h3>
+        <p>Delhi, Agra & Taj Mahal, Jaipur dengan pemandu sejarah profesional</p>
+        <div class="tour-meta">
+          <span>✈️ 8 Hari</span>
+          <span>⭐ 4.7</span>
+          <span>👥 Max 10</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price">Rp 15<span>jt/orang</span></div>
+          <button class="btn-book" onclick="openBookingModal('India Golden Triangle')">Pesan</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tour-card reveal">
+      <div class="tour-img">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Swiss">
+        <span class="tour-cat">Alam</span>
+      </div>
+      <div class="tour-body">
+        <h3>New Zealand Fjords</h3>
+        <p>Milford Sound, Queenstown, dan Hobbiton dalam tour eksklusif</p>
+        <div class="tour-meta">
+          <span>✈️ 12 Hari</span>
+          <span>⭐ 5.0</span>
+          <span>👥 Max 6</span>
+        </div>
+        <div class="tour-footer">
+          <div class="tour-price">Rp 42<span>jt/orang</span></div>
+          <button class="btn-book" onclick="openBookingModal('New Zealand Fjords')">Pesan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CITIES SCROLL ========== -->
+<section class="cities-section">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Kota Populer</div>
+    <h2 class="section-title">Kota yang Sedang<br><em>Trending</em></h2>
+  </div>
+
+  <div class="cities-scroll">
+    <div class="city-card" onclick="openBookingModal('Bangkok')">
+      <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=400&q=80" alt="Bangkok">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Bangkok</h3><p>Thailand</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Bali')">
+      <img src="https://images.unsplash.com/photo-1591017403286-fd8493524e1e?w=400&q=80" alt="Bali">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Bali</h3><p>Indonesia</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Rio de Janeiro')">
+      <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=400&q=80" alt="Rio">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Rio</h3><p>Brazil</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Tokyo')">
+      <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80" alt="Tokyo">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Tokyo</h3><p>Jepang</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Santorini')">
+      <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=400&q=80" alt="Santorini">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Santorini</h3><p>Yunani</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Dubai')">
+      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80" alt="Dubai">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Dubai</h3><p>UAE</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Paris')">
+      <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80" alt="Paris">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Paris</h3><p>Prancis</p></div>
+    </div>
+    <div class="city-card" onclick="openBookingModal('Machu Picchu')">
+      <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400&q=80" alt="Peru">
+      <div class="city-card-overlay"></div>
+      <div class="city-card-info"><h3>Machu Picchu</h3><p>Peru</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NATURE ========== -->
+<section class="nature-section">
+  <div class="section-header section-header--tight reveal">
+    <div class="section-tag">✦ Alam Indah</div>
+    <h2 class="section-title section-title--light">Pantai & Pegunungan<br><em>Terbaik</em> Dunia</h2>
+  </div>
+
+  <div class="nature-grid">
+    <div class="nature-card reveal" onclick="openBookingModal('Wisata Pantai')">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Beach">
+      <div class="nature-card-content">
+        <span class="tag">Pantai</span>
+        <h3>Surga di Tepi Samudra</h3>
+        <p>Maladewa · Bora Bora · Phuket · Langkawi</p>
+      </div>
+    </div>
+    <div class="nature-card reveal" onclick="openBookingModal('Wisata Pegunungan')">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Mountain">
+      <div class="nature-card-content">
+        <span class="tag">Pegunungan</span>
+        <h3>Puncak yang Menyentuh Langit</h3>
+        <p>Himalaya · Swiss Alps · Andes · Rinjani</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="brand">Luxe<span>Voyage</span></span>
+      <p>Kami percaya setiap perjalanan adalah sebuah karya seni. Izinkan kami melukiskan kenangan indah untuk Anda.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Jelajahi</h4>
+      <ul>
+        <li><a href="#">Penerbangan</a></li>
+        <li><a href="#">Hotel & Resort</a></li>
+        <li><a href="#">Sewa Mobil</a></li>
+        <li><a href="#">Paket Tur</a></li>
+        <li><a href="#">Wisata Alam</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Destinasi</h4>
+      <ul>
+        <li><a href="#">Bangkok</a></li>
+        <li><a href="#">Bali</a></li>
+        <li><a href="#">Brazil</a></li>
+        <li><a href="#">Tokyo</a></li>
+        <li><a href="#">Paris</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bantuan</h4>
+      <ul>
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Kontak</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Syarat & Ketentuan</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 LuxeVoyage. Hak cipta dilindungi.</p>
+    <p>Dibuat dengan ❤️ untuk para penjelajah dunia</p>
+  </div>
+</footer>
+
+</div><!-- end main-site -->
+
+<!-- ========== BOOKING MODAL ========== -->
+<div class="modal-bg" id="booking-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <div id="booking-content">
+      <div class="modal-title" id="modal-title">Pesan Perjalanan</div>
+      <div class="modal-sub" id="modal-sub">Lengkapi detail perjalanan Anda</div>
+
+      <!-- Steps indicator -->
+      <div class="steps">
+        <div class="step active" id="step-ind-1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Penumpang</div>
+        </div>
+        <div class="step" id="step-ind-2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Detail</div>
+        </div>
+        <div class="step" id="step-ind-3">
+          <div class="step-circle">3</div>
+          <div class="step-label">Pembayaran</div>
+        </div>
+        <div class="step" id="step-ind-4">
+          <div class="step-circle">4</div>
+          <div class="step-label">Konfirmasi</div>
+        </div>
+      </div>
+
+      <!-- STEP 1: Passengers -->
+      <div class="booking-step active" id="bstep-1">
+        <h3 class="booking-step-title">Jumlah Penumpang</h3>
+        <div class="passenger-counter">
+          <div class="counter-type">
+            <strong>Dewasa</strong>
+            <small>Di atas 12 tahun</small>
+          </div>
+          <div class="counter-btns">
+            <button class="counter-btn" onclick="changeCount('adult',-1)">−</button>
+            <span class="counter-val" id="adult-count">1</span>
+            <button class="counter-btn" onclick="changeCount('adult',1)">+</button>
+          </div>
+        </div>
+        <br>
+        <div class="passenger-counter">
+          <div class="counter-type">
+            <strong>Anak-anak</strong>
+            <small>2–12 tahun</small>
+          </div>
+          <div class="counter-btns">
+            <button class="counter-btn" onclick="changeCount('child',-1)">−</button>
+            <span class="counter-val" id="child-count">0</span>
+            <button class="counter-btn" onclick="changeCount('child',1)">+</button>
+          </div>
+        </div>
+        <br>
+        <div class="passenger-counter">
+          <div class="counter-type">
+            <strong>Bayi</strong>
+            <small>Di bawah 2 tahun</small>
+          </div>
+          <div class="counter-btns">
+            <button class="counter-btn" onclick="changeCount('infant',-1)">−</button>
+            <span class="counter-val" id="infant-count">0</span>
+            <button class="counter-btn" onclick="changeCount('infant',1)">+</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-next" onclick="goStep(2)">Lanjutkan →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Personal Details -->
+      <div class="booking-step" id="bstep-2">
+        <h3 class="booking-step-title">Data Diri Pemesan</h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Nama Depan</label>
+            <input type="text" id="f-firstname" placeholder="John">
+          </div>
+          <div class="form-field">
+            <label>Nama Belakang</label>
+            <input type="text" id="f-lastname" placeholder="Doe">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Email</label>
+          <input type="email" id="f-email" placeholder="john@email.com">
+        </div>
+        <div class="form-field">
+          <label>No. Telepon</label>
+          <input type="tel" id="f-phone" placeholder="+62 812 3456 7890">
+        </div>
+        <div class="form-field">
+          <label>Alamat Lengkap</label>
+          <input type="text" id="f-address" placeholder="Jl. Sudirman No. 1, Jakarta">
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Kota</label>
+            <input type="text" id="f-city" placeholder="Jakarta">
+          </div>
+          <div class="form-field">
+            <label>Kode Pos</label>
+            <input type="text" id="f-zip" placeholder="10110">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Keperluan / Permintaan Khusus</label>
+          <textarea id="f-notes" placeholder="Contoh: kursi dekat jendela, makanan vegetarian, kursi roda, dll..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-prev" onclick="goStep(1)">← Kembali</button>
+          <button class="btn-next" onclick="goStep(3)">Lanjutkan →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Payment -->
+      <div class="booking-step" id="bstep-3">
+        <h3 class="booking-step-title booking-step-title--sm">Ringkasan Pesanan</h3>
+        <div class="booking-summary">
+          <div class="summary-row">
+            <span>Destinasi</span>
+            <span id="sum-dest">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Penumpang</span>
+            <span id="sum-pass">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Pemesan</span>
+            <span id="sum-name">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Pajak & Biaya</span>
+            <span>Rp 750.000</span>
+          </div>
+          <div class="summary-row">
+            <span>Total Pembayaran</span>
+            <span id="sum-total" class="summary-total">—</span>
+          </div>
+        </div>
+
+        <h3 class="booking-step-title booking-step-title--md">Metode Pembayaran</h3>
+        <div class="payment-methods">
+          <div class="pay-method selected" onclick="selectPayment(this)">💳 Kartu Kredit</div>
+          <div class="pay-method" onclick="selectPayment(this)">🏦 Transfer Bank</div>
+          <div class="pay-method" onclick="selectPayment(this)">📱 E-Wallet</div>
+        </div>
+
+        <div id="card-form">
+          <div class="card-icons">
+            <span class="card-icon">VISA</span>
+            <span class="card-icon">MC</span>
+            <span class="card-icon">AMEX</span>
+          </div>
+          <div class="form-field">
+            <label>Nomor Kartu</label>
+            <input type="text" id="card-num" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label>Berlaku Hingga</label>
+              <input type="text" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+            </div>
+            <div class="form-field">
+              <label>CVV</label>
+              <input type="text" placeholder="•••" maxlength="4">
+            </div>
+          </div>
+          <div class="form-field">
+            <label>Nama di Kartu</label>
+            <input type="text" placeholder="JOHN DOE">
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-prev" onclick="goStep(2)">← Kembali</button>
+          <button class="btn-next btn-next--gold" onclick="processPayment(this)">🔒 Bayar Sekarang</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Success -->
+      <div class="booking-step" id="bstep-4">
+        <div class="success-state">
+          <div class="success-icon">✓</div>
+          <h2>Pemesanan Berhasil!</h2>
+          <p>Selamat! Perjalanan impian Anda telah dikonfirmasi.<br>Detail akan dikirim ke email Anda dalam beberapa menit.</p>
+          <div class="booking-ref" id="booking-ref">LXV-000000</div>
+          <br><br>
+          <button class="btn-next btn-next--center" onclick="closeModal()">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+</body>
+</html>
