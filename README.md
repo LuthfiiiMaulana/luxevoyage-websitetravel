@@ -15,9 +15,9 @@
 
 ## 🌐 Demo
 
-🌐 [Run demo](https://web-travel.vercel.app)
+🌐 [Run demo](https://luxevoyage-websitetravel.vercel.app)
 
-*(Tempel gambar showcase Figma kamu di baris kosong ini setelah di-upload)*
+
 
 ## ✨ Features
 
@@ -61,16 +61,16 @@ luxevoyage/
 ### Windows (Git Bash / Command Prompt)
 
 ```bash
-git clone [https://github.com/LuthfiiiMaulana/web-travel.git](https://github.com/LuthfiiiMaulana/web-travel.git)
-cd web-travel
+git clone https://github.com/LuthfiiiMaulana/luxevoyage-websitetravel.git
+cd luxevoyage-webtravel
 
 ```
 
 ### macOS & Linux
 
 ```bash
-sudo git clone [https://github.com/LuthfiiiMaulana/web-travel.git](https://github.com/LuthfiiiMaulana/web-travel.git)
-cd web-travel
+sudo clone https://github.com/LuthfiiiMaulana/luxevoyage-websitetravel.git
+cd luxevoyage-webtravel
 
 ```
 
