@@ -17,6 +17,7 @@
 
 🌐 [Run demo](https://luxevoyage-websitetravel.vercel.app)
 
+<img width="2752" height="1536" alt="Gemini_Generated_Image_i8i50ai8i50ai8i5" src="https://github.com/user-attachments/assets/bc56f78d-1887-456d-8a61-fc716db9c450" />
 
 
 ## ✨ Features
